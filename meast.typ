@@ -27,7 +27,7 @@
 
 #outline()
 
-// #include "01_tuple.typ"
+#include "01_introduction.typ"
 // #include "02_space.typ"
 // #include "03_pdiff.typ"
 // #include "04_iint.typ"
