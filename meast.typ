@@ -29,7 +29,7 @@
 
 #include "01_introduction.typ"
 #include "02_measure.typ"
-// #include "03_pdiff.typ"
+#include "03_integral.typ"
 // #include "04_iint.typ"
 // #include "05_fseq.typ"
 // #include "06_calc.typ"

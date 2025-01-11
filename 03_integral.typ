@@ -1,4 +1,9 @@
 
+#import "deps/theorem.typ": thmrules, theorem, proposition, definition, example, remark, proof
+#show: thmrules.with()
+
+#import "@preview/physica:0.9.4": dd
+
 = ルベーグ積分
 
 == 可測関数
@@ -310,7 +315,7 @@ $
 $g$の標準形を$g = sum_i c_i 1_(A_i)$として$m(A_i) < oo$の場合を考える。
 $epsilon > 0$に対して
 $
-B_(i, n) = A_i cap { f_n >= c_i-epsilon }
+B_(i, n) = A_i sect { f_n >= c_i-epsilon }
 $
 と設定すると、$f_n <= f_(n+1)$より$B_(i, n) subset B_(i, n+1)$で$g <= f = sup_n f_n$より$union.big_n B_(i, n) = A_i$である。
 さらに
