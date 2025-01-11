@@ -252,83 +252,117 @@ $
 ]
 
 == 単調収束定理
-<単調収束定理>
+
 積分論における単調収束定理とは単調増大する非負値可測関数の列を考えた時に積分の列が各点収束極限の積分に収束するという内容で積分と極限の交換を保証する十分条件を与える。
 リーマン積分においては各点収束極限が可積分あるいは可測とは限らないが、ルベーグ積分ではこの単調収束定理が成立する。
 単調収束定理に入る前に積分の単調性を示す。
 
-#block[
+#proposition([積分の単調性])[
 測度空間$(X, m)$上の非負値可測関数$f_1, f_2$に対して、すべての$x in X$で$f_1 (x) <= f_2 (x)$のとき
-$ integral_X f_1 dd(m <= integral_X f_2 dd(m $ が成り立つ。
+$
+integral_X f_1 dd(m) <= integral_X f_2 dd(m)
+$
+が成り立つ。
 特に可算個の非負値可測関数$f_n$に対して
-$ sup_n integral_X f_n dd(m <= integral_X sup_n f_n dd(m $ が成り立つ。
-
+$
+sup_n integral_X f_n dd(m) <= integral_X sup_n f_n dd(m)
+$
+が成り立つ。
 ]
+
 この「すべての$x in X$で$f_1 (x) <= f_2 (x)$」という条件を$f_1 <= f_2$と略記する。
 
-#block[
-_Proof.]
+#proof[
 $g$を$g <= f_1$を満たす非負値可測単関数とするとき、$g <= f_1 <= f_2$なので
-$ integral_X g dd(m <= integral_X f_2 dd(m $
+$
+integral_X g dd(m) <= integral_X f_2 dd(m)
+$
 であり、$g$についての上限をとることでほしかった不等式を得る。
 さらに$f_n$に対して$f_n <= sup_n f_n$なので、
-$ integral_X f_n dd(m <= integral_X sup_n f_n dd(m $
-であり、上限をとって後半部分の主張を得る。
-
+$
+integral_X f_n dd(m) <= integral_X sup_n f_n dd(m)
+$
+であり、$n$に関する上限をとって後半部分の主張を得る。
 ]
-#block[
+
+#theorem([単調収束定理])[
 測度空間$(X, m)$上の非負値可測関数の列$f_n$が単調増加する、つまり$f_n <= f_(n+1)$が成り立つとき、その各点収束極限
-$ f (x) := lim_(n -> oo) f_n (x) $ も非負値可測関数であり
-$ lim_(n -> oo) integral_X f_n dd(m = integral_X f dd(m $
+$
+f(x) := lim_(n -> oo) f_n (x)
+$
+も非負値可測関数であり
+$
+lim_(n -> oo) integral_X f_n dd(m) = integral_X f dd(m)
+$
 が成り立つ。
-
 ]
-#block[
-_Proof.]
+
+#proof[
 単調性の仮定より$f = lim_n f_n = sup_n f_n$なので、前に示したように$f$は可測である。
 $0 <= f_n <= f_(n+1) <= f$なので、積分の単調性から
-$ integral_X f_n dd(m <= integral_X f_(n+1) dd(m <= integral_X f dd(m $
+$
+integral_X f_n dd(m) <= integral_X f_(n+1) dd(m) <= integral_X f dd(m)
+$
 が成り立つ。
-したがって積分の列$integral_X f_n dd(m$は単調増加なので収束するか無限大に発散し、その値は$integral_X f dd(m$以下である。
+したがって積分の列$integral_X f_n dd(m)$は単調増加なので収束するか無限大に発散し、その値は$integral_X f dd(m)$以下である。
 あとはこれが実際には等しいことを示せばよい。
-さらにこのことは$g <= f$を満たす非負値可測単関数$g$に対して$lim_n integral_X f_n dd(m >= integral_X g dd(m$を示すことに帰着される。
-$g$の標準形を$g = sum_i c_i 1_(A_i)$として$m (A_i) < oo$の場合を考える。
+さらにこのことは$g <= f$を満たす非負値可測単関数$g$に対して$lim_n integral_X f_n dd(m) >= integral_X g dd(m)$を示すことに帰着される。
+$g$の標準形を$g = sum_i c_i 1_(A_i)$として$m(A_i) < oo$の場合を考える。
 $epsilon > 0$に対して
-\$\$B\_{i, n} = A\_i\\cap { f\_n >= c\_i-\\varepsilon }\$\$
+$
+B_(i, n) = A_i cap { f_n >= c_i-epsilon }
+$
 と設定すると、$f_n <= f_(n+1)$より$B_(i, n) subset B_(i, n+1)$で$g <= f = sup_n f_n$より$union.big_n B_(i, n) = A_i$である。
 さらに
-$ integral_X f_n dd(m >= sum_i integral_(B_(i, n)) f_n dd(m >= sum_i (c_i-epsilon) m (B_(i, n)) >= sum_i c_i m (B_(i, n))-epsilon sum_i c_i m (A_i) . $
-よって \$\$\\int\_X g\\dd{m}
-= \\sum\_i c\_i m(A\_i)
-% = \\sum\_i c\_i m\\qty(\\bigcup\_n B\_{i, n})
-= \\lim\_{n \\to \\infty}\\sum\_i c\_i m\\qty(B\_{i, n})
-\\le \\lim\_{n \\to \\infty}\\int\_X f\_n\\dd{m}+\\varepsilon\\sum\_i c\_i m(A\_i)\$\$
+$
+integral_X f_n dd(m)
+>= sum_i integral_(B_(i, n)) f_n dd(m)
+>= sum_i (c_i-epsilon) m(B_(i, n))
+>= sum_i c_i m (B_(i, n))-epsilon sum_i c_i m (A_i).
+$
+よって
+$
+integral_X g dd(m)
+= sum_i c_i m(A_i)
+// = sum_i c_i m(union.big_n B_(i, n))
+= lim_n sum_i c_i m(B_(i, n))
+<= lim_n integral_X f_n dd(m)+epsilon sum_i c_i m(A_i)
+$
 なので、
-$epsilon -> 0$として$integral_X g dd(m <= lim_n integral_X f_n dd(m$を得る。
-$m (A_i) = oo$となる$A_i$がある場合も同様の議論をすることで$lim_n integral_X f_n dd(m = integral_X g dd(m = oo$がわかる。
+$epsilon -> 0$として$integral_X g dd(m) <= lim_n integral_X f_n dd(m)$を得る。
+$m(A_i) = oo$となる$A_i$がある場合も同様の議論をすることで$lim_n integral_X f_n dd(m) = integral_X g dd(m) = oo$がわかる。
 以上より単調収束定理が証明された。
-
 ]
+
 ファトゥの補題は単調収束定理において単調性の仮定を外した時に得られる片側の不等式を保証する定理である。
 内容はある意味で（ルベーグ）積分が下半連続になっているというものと解釈できる。
 
-#block[
+#theorem([ファトゥの補題])[
 測度空間$(X, m)$上の非負値可測関数の列$f_n$に対して、その各点下極限
-$ f (x) := liminf_(n -> oo) f_n (x) in macron(RR)_(+) $
+$
+f(x) := liminf_(n -> oo) f_n (x) in macron(RR)_+
+$
 も非負値可測関数であり
-$ liminf_(n -> oo) integral_X f_n dd(m >= integral_X f dd(m $
+$
+liminf_(n -> oo) integral_X f_n dd(m) >= integral_X f dd(m)
+$
 が成り立つ。
-
 ]
-#block[
+
+#proof[
 可測関数であることは前に示したとおりである。
 自然数$n$に対して$g_n = inf_(k >= n) f_k$とおくと、$g_n$は単調増大して$f$に各点収束する。
-ここですべての$k >= n$に対して$g_n <= f_k$なので、$integral_X g_n dd(m <= integral_X f_k dd(m$で$integral_X g_n dd(m <= inf_(k >= n) integral_X f_k dd(m$である。
+ここですべての$k >= n$に対して$g_n <= f_k$なので、$integral_X g_n dd(m) <= integral_X f_k dd(m)$で$integral_X g_n dd(m) <= inf_(k >= n) integral_X f_k dd(m)$である。
 ここで$n -> oo$とすることで単調収束定理から
-$ integral_X f dd(m = lim_(n -> oo) integral_X g_n dd(m <= lim_(n -> oo) inf_(k >= n) integral_X f_k dd(m = liminf_(n -> oo) integral_X f_n dd(m $
+$
+integral_X f dd(m)
+= lim_(n -> oo) integral_X g_n dd(m)
+<= lim_(n -> oo) inf_(k >= n) integral_X f_k dd(m)
+= liminf_(n -> oo) integral_X f_n dd(m)
+$
 となる。
-
 ]
+
 == 積分の性質
 <積分の性質>
 #block[
