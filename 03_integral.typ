@@ -364,132 +364,196 @@ $
 ]
 
 == 積分の性質
-<積分の性質>
-#block[
-測度空間$(X, m)$上の複素数値ルベーグ積分可能関数$f, g$と複素数$c$に対して、和$f+g$と定数倍$c f$もルベーグ積分可能であり
-$ integral_X (f+g) dd(m = integral_X f dd(m+integral_X g dd(m, quad integral_X c f dd(m = c integral_X f dd(m $
-が成り立つ。
 
+#proposition([積分の線形性])[
+測度空間$(X, m)$上の複素数値ルベーグ積分可能関数$f, g$と複素数$c$に対して、和$f+g$と定数倍$c f$もルベーグ積分可能であり
+$
+integral_X (f+g) dd(m) = integral_X f dd(m)+integral_X g dd(m),
+quad integral_X c f dd(m) = c integral_X f dd(m)
+$
+が成り立つ。
 ]
-#block[
+
+#proof[
 まず$f, g$が拡張非負値で$c$が非負の時を示す。
 定数倍はすぐわかる。
 和は$f, g$を単調単関数近似して$f_n, g_n$を取ると、$f_n+g_n$は$f+g$の単調単関数近似になっていて
-$ integral_X (f_n+g_n) dd(m = integral_X f_n dd(m+integral_X g_n dd(m $
+$
+integral_X (f_n+g_n) dd(m) = integral_X f_n dd(m)+integral_X g_n dd(m)
+$
 なので従う。
 
 次に$f, g$が拡張実数値で$c$が実数の時を示す。
 定数倍は$c$の符号で場合分けしてすぐわかる。
 和も$f, g$の符号で四つの可測集合
-\$\$A\_{+ +} = { f >= 0, g >= 0 },
-\\quad A\_{+ -} = { f >= 0, g \< 0 },
-\\quad A\_{- +} = { f \< 0, g >= 0 },
-\\quad A\_{- -} = { f \< 0, g \< 0 }\$\$ に分けて考える。
+$
+A_(+ +) = { f >= 0, g >= 0 },
+quad A_(+ -) = { f >= 0, g < 0 },
+quad A_(- +) = { f < 0, g >= 0 },
+quad A_(- -) = { f < 0, g < 0 }
+$
+に分けて考える。
 このうち$A_(+ +)$と$A_(- -)$の部分は同符号なので先の非負値関数の和に帰着される。
 あとは$A_(+ -)$を考えるとさらに$f+g$の符号で分けて
-\$\$A\_{+-+} = { f >= 0, g \< 0, f+g >= 0 },
-\\quad A\_{+--} = { f >= 0, g \< 0, f+g \< 0 }\$\$ とする。
-$A_(+-+)$においては$f = (f+g)+(- g)$で$f+g$と$- g$が非負より
-$ integral_(A_(+-+)) f dd(m = integral_(A_(+-+)) (f+g) dd(m+integral_(A_(+-+)) (- g) dd(m = integral_(A_(+-+)) (f+g) dd(m-integral_(A_(+-+)) g dd(m $
-で、同様にして$A_(+--)$においては$f+(- f-g) =-g$で$f$と$- f-g$が非負より
-$ integral_(A_(+--)) f dd(m+integral_(A_(+--)) (- f-g) dd(m = integral_(A_(+--)) f dd(m-integral_(A_(+--)) (f+g) dd(m = integral_(A_(+--)) (- g) dd(m =-integral_(A_(+--)) g dd(m $
-である。 したがってどちらの場合でも
-$ integral_(A_(+ -)) (f+g) dd(m = integral_(A_(+ -)) f dd(m+integral_(A_(+ -)) g dd(m $
+$
+A_(+-+) = { f >= 0, g < 0, f+g >= 0 },
+quad A_(+--) = { f >= 0, g < 0, f+g < 0 }
+$
+とする。
+$A_(+-+)$においては$f = (f+g)+(-g)$で$f+g$と$-g$が非負より
+$
+integral_(A_(+-+)) f dd(m)
+= integral_(A_(+-+)) (f+g) dd(m)+integral_(A_(+-+)) (-g) dd(m)
+= integral_(A_(+-+)) (f+g) dd(m)-integral_(A_(+-+)) g dd(m)
+$
+で、同様にして$A_(+--)$においては$f+(-f-g) = -g$で$f$と$-f-g$が非負より
+$
+integral_(A_(+--)) f dd(m)+integral_(A_(+--)) (-f-g) dd(m)
+= integral_(A_(+--)) f dd(m)-integral_(A_(+--)) (f+g) dd(m)
+= integral_(A_(+--)) (-g) dd(m)
+= -integral_(A_(+--)) g dd(m)
+$
+である。
+したがってどちらの場合でも
+$
+integral_(A_(+ -)) (f+g) dd(m) = integral_(A_(+ -)) f dd(m)+integral_(A_(+ -)) g dd(m)
+$
 となる。 $A_(- +)$においても同様にすることで、和の積分の公式が示される。
 
 最後に$f, g$が複素数値で$c$が複素数の時は実部虚部に分けると実数の場合に帰着されて示される。
-
 ]
-#block[
+
+#proposition([積分の単調性（実数値）])[
 測度空間$(X, m)$上の拡張実数値ルベーグ積分可能な関数$f_1, f_2$に対して、$f_1 <= f_2$のとき
-$ integral_X f_1 dd(m <= integral_X f_2 dd(m $ が成り立つ。
-特に拡張実数値ルベーグ積分可能な関数$f$に対して
-\$\$\\abs{\\int\_X f\\dd{m}} \\le \\int\_X \\abs{f}\\dd{m}\$\$
+$
+integral_X f_1 dd(m) <= integral_X f_2 dd(m)
+$
 が成り立つ。
-さらには可算個の拡張実数値ルベーグ積分可能な関数$f$に対して、$integral_X sup_n f_n dd(m <+oo$ならば
-$ sup_n integral_X f_n dd(m <= integral_X sup_n f_n dd(m $
-が成り立ち、$integral_X inf_n f_n dd(m >-oo$ならば
-$ inf_n integral_X f_n dd(m >= integral_X inf_n f_n dd(m $ が成り立つ。
-
+特に拡張実数値ルベーグ積分可能な関数$f$に対して
+$
+abs(integral_X f dd(m)) <= integral_X abs(f) dd(m)
+$
+が成り立つ。
+さらには可算個の拡張実数値ルベーグ積分可能な関数$f$に対して、
+$integral_X sup_n f_n dd(m) < +oo$ならば
+$
+sup_n integral_X f_n dd(m) <= integral_X sup_n f_n dd(m)
+$
+が成り立ち、
+$integral_X inf_n f_n dd(m) > -oo$ならば
+$
+inf_n integral_X f_n dd(m) >= integral_X inf_n f_n dd(m)
+$
+が成り立つ。
 ]
-#block[
-_Proof.]
+
+#proof[
 $f_1 = f_2 = plus.minus oo$となる集合は測度零でないと積分可能にならないのでこれらの集合は無視できる。
 ここで差$g = f_2-f_1$は非負値関数なので非負値に対する積分の単調性より、
-$ integral_X g dd(m = integral_X f_2 dd(m-integral_X f_1 dd(m >= 0 . $
+$
+integral_X g dd(m) = integral_X f_2 dd(m)-integral_X f_1 dd(m) >= 0.
+$
 よって前半部分は示された。
-ルベーグ積分可能関数$f$に対して\$-\\abs{f} \\le f \\le \\abs{f}\$より
-\$\$-\\int\_X \\abs{f}\\dd{m} \\le \\int\_X f\\dd{m} \\le \\int\_X \\abs{f}\\dd{m}\$\$
+ルベーグ積分可能関数$f$に対して$-abs(f) <= f <= abs(f)$より
+$
+-integral_X abs(f) dd(m) <= integral_X f dd(m) <= integral_X abs(f) dd(m)
+$
 なので、後半部分も成立する。
-
 ]
-#block[
+
+#proposition([積分の単調性（複素数値）])[
 測度空間$(X, m)$上の複素数値ルベーグ積分可能な関数$f$に対して
-\$\$\\abs{\\int\_X f\\dd{m}} \\le \\int\_X \\abs{f}\\dd{m}\$\$
+$
+abs(integral_X f dd(m)) <= integral_X abs(f) dd(m)
+$
 が成り立つ。
-
 ]
-#block[
-_Proof.]
-$a$を\$\\abs{a} \\le 1\$を満たす実部と虚部がともに有理数な複素数とすると、任意の複素数$z$に対して\$\\abs{z} = \\sup\_{\\abs{a} \\le 1}\\Re a z\$である。
-よって、 \$\$\\int\_X \\abs{f}\\dd{m}
-= \\int\_X \\sup\_{\\abs{a} \\le 1}\\Re a f\\dd{m}
->= \\sup\_{\\abs{a} \\le 1}\\int\_X \\Re a f\\dd{m}
-= \\sup\_{\\abs{a} \\le 1}\\Re a \\int\_X f\\dd{m}
-= \\abs{\\int\_X f\\dd{m}}\$\$ である。
 
+#proof[
+$a$を$abs(a) <= 1$を満たす実部と虚部がともに有理数な複素数とすると、
+任意の複素数$z$に対して$abs(z) = sup_(abs(a) <= 1) Re a z$である。
+よって、
+$
+integral_X abs(f) dd(m)
+= integral_X sup_(abs(a) <= 1) Re a f dd(m)
+>= sup_(abs(a) <= 1) integral_X Re a f dd(m)
+= sup_(abs(a) <= 1) Re a integral_X f dd(m)
+= abs(integral_X f dd(m))
+$
+である。
 ]
-#block[
+
+#proposition([マルコフの不等式])[
 測度空間$(X, m)$上の拡張実数値あるいは複素数値ルベーグ積分可能な関数$f$と$t > 0$に対して
-\$\$m({ \\abs{f} >= t }) \\le \\frac{1}{t}\\int\_X \\abs{f}\\dd{m}\$\$
+$
+m({ abs(f) >= t }) <= 1/t integral_X abs(f) dd(m)
+$
 が成り立つ。
-
 ]
-#block[
+
+#proof[
 非負値関数のルベーグ積分の定義より$T > 0$に対して
-\$\$\\int\_X \\abs{f}\\dd{m}
-= \\int\_0^\\infty m({ \\abs{f} >= t })\\dd{t}
->= \\int\_0^T m({ \\abs{f} >= t })\\dd{t}
->= \\int\_0^T m({ \\abs{f} >= T })\\dd{t}
-= T m({ \\abs{f} >= T })\$\$ である。
-
+$
+integral_X abs(f) dd(m)
+= integral_0^oo m({ abs(f) >= t }) dd(t)
+>= integral_0^T m({ abs(f) >= t }) dd(t)
+>= integral_0^T m({ abs(f) >= T }) dd(t)
+= T m({ abs(f) >= T })
+$
+である。
 ]
+
 == ルベーグの優収束定理
-<ルベーグの優収束定理>
+
 単調収束定理やファトゥの補題の内容は拡張実数値関数の列$f_n$にも拡張できるが、
-$f_n >= g$,
-$integral_X g dd(m >-oo$である$g$の存在の仮定が必要になる。
-この仮定がない場合は$integral_X f_n dd(m =-oo$だが$integral_X f dd(m >-oo$となる反例が構成できてしまう。
+$f_n >= g$, $integral_X g dd(m) > -oo$である$g$の存在の仮定が必要になる。
+この仮定がない場合は$integral_X f_n dd(m) = -oo$だが$integral_X f dd(m) > -oo$となる反例が構成できてしまう。
 証明は$f_n-g$が非負値なのでそれに対して単調収束定理やファトゥの補題を適用して$g$の積分を足すという議論になるため、実質的に$f_n$は非負値である。
 
-#block[
+#theorem([実数版ファトゥの補題])[
 測度空間$(X, m)$上の拡張実数値可測関数の列$f_n$に対して次が成り立つ。
 
-- （ファトゥの補題） $integral_X inf_n f_n dd(m >-oo$ならば
-  $ liminf_n integral_X f_n dd(m >= integral_X liminf_n f_n dd(m $
+- （ファトゥの補題）
+  $integral_X inf_n f_n dd(m) > -oo$ならば
+  $
+  liminf_n integral_X f_n dd(m) >= integral_X liminf_n f_n dd(m)
+  $
   が成り立つ。
-
-- （逆ファトゥの補題） $integral_X sup_n f_n dd(m <+oo$ならば
-  $ limsup_n integral_X f_n dd(m <= integral_X limsup_n f_n dd(m $
+- （逆ファトゥの補題）
+  $integral_X sup_n f_n dd(m) < +oo$ならば
+  $
+  limsup_n integral_X f_n dd(m) <= integral_X limsup_n f_n dd(m)
+  $
   が成り立つ。
-
 ]
+
 証明は先述の方法でできる。
 
-#block[
+#theorem([優収束定理])[
 測度空間$(X, m)$上の複素数値可測関数の列$f_n$が$f$に各点収束するとする。
-ここで差の絶対値の各点上限がルベーグ可積分\$\\int\_X \\sup\_n \\abs{f\_n-f}\\dd{m} \< \\infty\$を仮定するとき、
-\$\$\\lim\_{n \\to \\infty}\\int\_X \\abs{f\_n-f}\\dd{m} = 0\$\$
-が成り立つ。 また、このことは
-$ lim_(n -> oo) integral_X f_n dd(m = integral_X f dd(m $
+ここで差の絶対値の各点上限がルベーグ可積分である、つまり
+$
+integral_X sup_n abs(f_n-f) dd(m) < oo
+$
+を仮定するとき、
+$
+lim_n integral_X abs(f_n-f) dd(m) = 0
+$
+が成り立つ。
+また、このことは
+$
+lim_n integral_X f_n dd(m) = integral_X f dd(m)
+$
 を意味する。
-
 ]
-#block[
+
+#proof[
 前半部分は逆ファトゥの補題より直ちに従う。
 後半部分は積分の大小関係で示したことから
-\$\$\\abs{\\int\_X f\_n\\dd{m}-\\int\_X f\\dd{m}}
-= \\abs{\\int\_X (f\_n-f)\\dd{m}}
-\\le \\int\_X \\abs{f\_n-f}\\dd{m}\$\$ なので、すぐわかる。
-
+$
+abs(integral_X f_n dd(m)-integral_X f dd(m))
+= abs(integral_X (f_n-f) dd(m))
+<= integral_X abs(f_n-f) dd(m)
+$
+なので、すぐわかる。
 ]
