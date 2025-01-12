@@ -31,7 +31,7 @@
 #include "02_measure.typ"
 #include "03_integral.typ"
 #include "04_lebesgue.typ"
-// #include "05_fseq.typ"
+#include "05_fubini.typ"
 // #include "06_calc.typ"
 // #include "07_limint.typ"
 
