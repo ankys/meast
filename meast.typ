@@ -34,4 +34,4 @@
 #include "05_fubini.typ"
 #include "06_differential.typ"
 
-// #bibliography("99_ref.yml")
+#bibliography("99_ref.yml")

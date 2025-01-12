@@ -1,0 +1,23 @@
+
+r_a12a:
+  type: Web
+  author: 会田茂樹
+  title: ルベーグ積分入門前編
+  url: https://www.ms.u-tokyo.ac.jp/~aida/lecture/24/analysisB1.pdf
+  date: 2012
+r_a12b:
+  type: Web
+  author: 会田茂樹
+  title: ルベーグ積分入門後編
+  url: https://www.ms.u-tokyo.ac.jp/~aida/lecture/24/analysisB2.pdf
+  date: 2012-12-13
+r_i63:
+  type: Book
+  author: 伊藤清三
+  title: ルベーグ積分入門
+  date: 1963-4
+r_y06:
+  type: Book
+  author: 吉田伸生
+  title: ルベーグ積分入門　使うための理論と演習
+  date: 2006-5-1
