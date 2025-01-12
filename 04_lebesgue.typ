@@ -187,150 +187,166 @@ $
 ]
 
 == 生成された加法族
-<生成された加法族>
+
 集合$X$とその集合族（$X$のいくつかの部分集合からなる集合）$cal(C)$が与えられた時、
-そこにさらに$X$の部分集合を最小限追加して完全加法族$sigma (cal(C))$を作る。
+そこにさらに$X$の部分集合を最小限追加して完全加法族$sigma(cal(C))$を作る。
 
-#block[
+#proposition([生成された完全加法族])[
 集合$X$とその集合族$cal(C)$に対して$cal(F)$を$cal(C)$を包含する$X$の完全加法族として、
-$ sigma (cal(C)) = sect.big_(cal(F) supset cal(C)) cal(F) $
-は$X$の完全加法族であり、$cal(C)$を包含する完全加法族の中で最小のものである。
-
+$
+sigma(cal(C)) = sect.big_(cal(F) supset cal(C)) cal(F)
+$
+は$X$の完全加法族であり、
+$cal(C)$を包含する完全加法族の中で最小のものである。
 ]
-この$sigma (cal(C))$を集合族$cal(C)$が_生成する完全加法族_という。
 
-#block[
+この$sigma(cal(C))$を集合族$cal(C)$が_生成する完全加法族_という。
 
-最小性は定義からすぐわかるので$sigma (cal(C))$が完全加法族を示す。
+#proof[
+最小性は定義からすぐわかるので$sigma(cal(C))$が完全加法族を示す。
 
-+ 空集合$nothing$は完全加法族$cal(F)$に共通して属しているので、$nothing in sigma (cal(C))$である。
-
-+ 集合$A in sigma (cal(C))$の補集合$A^c$について、$A in sigma (cal(C)) subset cal(F)$ならば$A^c in cal(F)$より$A^c in sigma (cal(C))$である。
-
-+ 可算個の集合$A_n in sigma (cal(C))$の合併$A = union.big_n A_n$について、$A_n in sigma (cal(C)) subset cal(F)$ならば$A in cal(F)$より$A in sigma (cal(C))$である。
++ 空集合$nothing$は完全加法族$cal(F)$に共通して属しているので、$nothing in sigma(cal(C))$である。
++ 集合$A in sigma(cal(C))$の補集合$A^c$について、$A in sigma(cal(C)) subset cal(F)$ならば$A^c in cal(F)$より$A^c in sigma(cal(C))$である。
++ 可算個の集合$A_n in sigma(cal(C))$の合併$A = union.big_n A_n$について、$A_n in sigma(cal(C)) subset cal(F)$ならば$A in cal(F)$より$A in sigma(cal(C))$である。
 
 以上より証明された。
-
 ]
+
 多くの場合、完全加法族はこのようにして構成される。
 その中でも特に重要なのが位相空間におけるボレル集合族である。
 
-#block[
-位相空間$(X, cal(O))$において、開集合系$cal(O)$が生成する$X$の完全加法族を$(X, cal(O))$の_ボレル集合族_といい$cal(B) (X, cal(O))$と表す。
-また、ボレル集合族に属する可測集合を$(X, cal(O))$の_ボレル可測集合_といい、$(X, cal(B) (X, cal(O)))$を_ボレル可測空間_という。
-
+#definition([ボレル可測])[
+位相空間$(X, cal(O))$において、開集合系$cal(O)$が生成する$X$の完全加法族を$(X, cal(O))$の_ボレル集合族_といい$cal(B)(X, cal(O))$と表す。
+また、ボレル集合族に属する可測集合を$(X, cal(O))$の_ボレル可測集合_といい、$(X, cal(B)(X, cal(O)))$を_ボレル可測空間_という。
 ]
+
 距離空間やユークリッド空間$RR^N$などの標準的な開集合系がある対象においては$cal(O)$は省略される。
-また、前章で定義した可測関数はボレル可測空間$(RR, cal(B) (RR))$への可測写像と見なすことができる。
+また、前章で定義した可測関数はボレル可測空間$(RR, cal(B)(RR))$への可測写像と見なすことができる。
 
 == 完備測度
-<完備測度>
+
 ボレル可測集合は開集合や閉集合をはじめとして様々な集合を集めている。
 しかしながら、それでもルベーグ可測集合とは少し差がある。
 その差こそが完備性の有無である。
 
-#block[
+#definition([完備測度空間])[
 測度空間$(X, cal(F), m)$が完備であるとは、$m(A) = 0$となる測度零集合$A in cal(F)$に対して任意の部分集合$B subset A$は$cal(F)$に属する可測集合（であり測度零）であることをいう。
+]
 
+#theorem([完備化])[
 ]
-#block[
-]
+
 == ホップの拡張定理
-<ホップの拡張定理>
+
 ジョルダン測度のような可算加法的ではないが有限加法的ではある場合にそれを可算加法的な測度に拡張することを保証するのがホップの拡張定理である。
 
-#block[
+#theorem([ホップの拡張定理])[
 有限加法的測度空間$(X, cal(A), m_0)$が完全加法的、つまり可算個の任意の互いに交わりを持たない可算集合$A_i in cal(A)$であって$union.big_i A_i in cal(A)$であるものに対して
-\$\$m\_0\\qty(\\bigcup\_i A\_i) = \\sum\_i m\_0(A\_i)\$\$
+$
+m_0 (union.big_i A_i) = sum_i m_0 (A_i)
+$
 が成り立つとき、
-完全加法族$sigma (cal(A))$上の完全加法的な測度$m$であって任意の$A in cal(A)$に対して$m(A) = m_0 (A)$となるものが存在する。
-
+完全加法族$sigma(cal(A))$上の完全加法的な測度$m$であって任意の$A in cal(A)$に対して$m(A) = m_0 (A)$となるものが存在する。
 ]
-#block[
+
+#remark[
 この定理の逆のこと、つまり有限加法的測度が完全加法的に拡張できるなら空間が完全加法的であることはすぐわかる。
-
 ]
-#block[
 
+#proof[
 まず、外測度$macron(m)$を、部分集合$A subset X$に対して可算個の可測集合$A_i in cal(A)$で被覆することで
-\$\$\\bar{m}(A) = \\inf\\qty{ \\sum\_i m\_0(A\_i) \\mid A\_i \\in \\mathcal{A}, \\bigcup\_i A\_i \\supset A }\$\$
-と定める。 これが実際に外測度になることはすでに示した命題による。
+$
+macron(m)(A) = inf{ sum_i m_0 (A_i) mid(|) A_i in cal(A), union.big_i A_i supset A }
+$
+と定める。
+これが実際に外測度になることはすでに示した命題による。
 ここからカラテオドリの拡張定理により完備測度空間$(X, cal(F), m)$が構成できる。
 あとは$cal(F) supset cal(A)$と任意の$A in cal(A)$に対して$macron(m)(A) = m_0 (A)$を示せば定理が証明される。
 
 このうち$cal(F) supset cal(A)$は$A in cal(A)$が$A in cal(F)$つまり$B subset X$に対して
-$ macron(m)(B sect A)+macron(m)(B sect A^c) <= macron(m)(B) $ を示せばよい。
+$
+macron(m)(B sect A)+macron(m)(B sect A^c) <= macron(m)(B)
+$
+を示せばよい。
 $macron(m)(B) = oo$ならば直ちに従うので、$macron(m)(B) < oo$の場合を考える。
 正の数$epsilon > 0$に対して外測度の定義より$B_i in cal(A)$が存在して$union.big_i B_i supset B$かつ
-$ sum_i m_0 (B_i) <= macron(m)(B)+epsilon $ となる。
+$
+sum_i m_0 (B_i) <= macron(m)(B)+epsilon
+$
+となる。
 ここで$B sect A subset union.big_i (B_i sect A)$と$B sect A^c subset union.big_i (B_i sect A^c)$より
-$ macron(m)(B sect A)+macron(m)(B sect A^c) <= sum_i m_0 (B_i sect A)+sum_i m_0 (B_i sect A^c) = sum_i (m_0 (B_i sect A)+m_0 (B_i sect A^c)) $
+$
+macron(m)(B sect A)+macron(m)(B sect A^c)
+<= sum_i m_0 (B_i sect A)+sum_i m_0 (B_i sect A^c)
+= sum_i (m_0 (B_i sect A)+m_0 (B_i sect A^c)).
+$
 ここで$m_0$は有限加法性を持っているので、
-$ macron(m)(B sect A)+macron(m)(B sect A^c) <= sum_i m_0 (B_i) <= macron(m)(B)+epsilon . $
+$
+macron(m)(B sect A)+macron(m)(B sect A^c) <= sum_i m_0 (B_i) <= macron(m)(B)+epsilon.
+$
 したがって$cal(F) supset cal(A)$がわかる。
 
 続いて$A in cal(A)$に対して$macron(m)(A) = m_0 (A)$を示すが、外測度の定義から$macron(m)(A) <= m_0 (A)$は自明なので$m_0 (A) <= macron(m)(A)$を示す。
 これは$A_i in cal(A)$で$union.big_i A_i supset A$となるものに対して
-$ m_0 (A) <= sum_i m_0 (A_i) $ を示せばよい。
+$
+m_0 (A) <= sum_i m_0 (A_i)
+$
+を示せばよい。
 ここで$B_n = A_n sect (sect.big_(i < n) A_i^c) sect A in cal(A)$とおくと$B_n$は互いに交わりを持たないで$union.big_i B_i = A$なので完全加法性より、
-$ m_0 (A) = sum_i m_0 (B_i) . $
+$
+m_0 (A) = sum_i m_0 (B_i).
+$
 各$n$に対して$B_n subset A_n$なので、ほしい不等式が成立する。
 
 以上より定理が証明された。
-
 ]
+
 また、この拡張は一意的である。
 
-#block[
+#definition([シグマ有限])[
 有限加法的測度空間$(X, cal(A), m_0)$に対して可算個の測度有限$m_0 (A_i) < oo$な可測集合$A_i in cal(A)$であって$X$を被覆するつまり$union.big_i A_i = X$となるものが存在するとき、$(X, cal(A), m_0)$は_シグマ有限_であるという。
-
 ]
-#block[
+
+#remark[
 $X_n = union.big_(i <= n) A_i$とおけば単調性$X_n subset X_(n+1)$を満たす。
-
 ]
-#block[
+
+#theorem([ホップの拡張定理の一意性])[
 有限加法的測度空間$(X, cal(A), m_0)$がシグマ有限のとき、ホップの拡張定理での測度$m$は一意である。
-
 ]
+
 証明のために次の単調族定理を用意する。
 
-#block[
+#definition([単調族])[
 集合$X$の集合族$cal(M)$が次の条件をみたすとき_単調族_という。
 
 + $A_i in cal(M)$が$A_n subset A_(n+1)$をみたすとき、$union.big_i A_i in cal(M)$となる。
-
 + $A_i in cal(M)$が$A_n supset A_(n+1)$をみたすとき、$sect.big_i A_i in cal(M)$となる。
 
-さらに集合$X$の集合族$cal(C)$に対して、$cal(C)$を含む中で最小の単調族が存在し$M (cal(C))$と表す。
-
+さらに集合$X$の集合族$cal(C)$に対して、$cal(C)$を含む中で最小の単調族が存在し$M(cal(C))$と表す。
 ]
-#block[
-集合$X$の有限加法族$cal(A)$に対して$M (cal(A)) = sigma (cal(A))$が成り立つ。
 
+#theorem([単調族定理])[
+集合$X$の有限加法族$cal(A)$に対して$M(cal(A)) = sigma(cal(A))$が成り立つ。
 ]
-#block[
 
-完全加法族は単調族なので、$M (cal(A)) subset sigma (cal(A))$は自明であり、あとは$M (cal(A))$が完全加法族になることを示せばよい。
+#proof[
+完全加法族は単調族なので、$M(cal(A)) subset sigma(cal(A))$は自明であり、あとは$M(cal(A))$が完全加法族になることを示せばよい。
 
-+ $cal(A)$は有限加法族なので、$nothing in cal(A) subset M (cal(A))$である。
-
++ $cal(A)$は有限加法族なので、$nothing in cal(A) subset M(cal(A))$である。
 + TODO
-
-
-
 ]
-#block[
-_ホップの拡張定理の一意性の証明.]
-有限加法的測度$m_0$の$cal(F) = sigma (cal(A))$への拡張$m_1, m_2$が$m_1 = m_2$をみたすことを示す。
-シグマ有限性より$X_n in cal(A)$であって$m_0 (X_n) < oo$,
-$X_n subset X_(n+1)$, $union.big_n X_n = X$をみたすものが取れる。
+
+#proof([ホップの拡張定理の一意性の証明])[
+有限加法的測度$m_0$の$cal(F) = sigma(cal(A))$への拡張$m_1, m_2$が$m_1 = m_2$をみたすことを示す。
+シグマ有限性より$X_n in cal(A)$であって$m_0 (X_n) < oo$, $X_n subset X_(n+1)$, $union.big_n X_n = X$をみたすものが取れる。
 この$X_n$をもとにして集合族
-\$\$\\mathcal{C} = \\qty{ A \\in \\mathcal{F} \\mid m\_1(A\\cap X\_n) = m\_2(A\\cap X\_n) \\quad \\forall n \\in \\mathbb{N} }\$\$
+$
+cal(C) = { A in cal(F) mid m_1 (A sect X_n) = m_2 (A sect X_n) forall n in NN }
+$
 を定める。
 有限加法族$cal(A)$上では$m = m_1 = m_2$なので、$cal(A) subset cal(C)$である。
-よって$cal(C)$が単調族であることを示せば、単調族定理より$cal(F) = sigma (cal(A)) subset cal(C)$なので、すべての$A in cal(F)$に対して$m_1 (A sect X_n) = m_2 (A sect X_n)$で$n -> oo$として$m_1 (A) = m_2 (A)$を得る。
+よって$cal(C)$が単調族であることを示せば、単調族定理より$cal(F) = sigma(cal(A)) subset cal(C)$なので、すべての$A in cal(F)$に対して$m_1 (A sect X_n) = m_2 (A sect X_n)$で$n -> oo$として$m_1 (A) = m_2 (A)$を得る。
 したがってあとは$cal(C)$が単調族であることを示せばよいが、これは測度の単調性より容易に示される。
 ただし、単調減少列について測度の有限性が必要になってくるが、これは$m_1 (X_n) = m_2 (X_n) = m_0 (X_n) < oo$から従う（詳細省略）。
-
 ]
