@@ -1,4 +1,9 @@
 
+#import "deps/theorem.typ": thmrules, theorem, proposition, definition, example, remark, proof
+#show: thmrules.with()
+
+#import "@preview/physica:0.9.4": dd
+
 = ルベーグ測度
 
 == ルベーグ外測度とルベーグ測度
@@ -15,7 +20,7 @@ $
 部分集合$A subset RR^N$に対して、可算個の開矩形$R_i = (a^i_1, b^i_1) times dots times (a^i_N, b^i_N)$で被覆することで
 $
 macron(cal(L))^N (A)
-= inf{ sum_i (b^i_1-a^i_1) dots (b^i_N-a^i_N) mid(|) bigcup_i (a^i_1, b^i_1) times dots times (a^i_N, b^i_N) supset A }
+= inf{ sum_i (b^i_1-a^i_1) dots (b^i_N-a^i_N) mid(|) union.big_i (a^i_1, b^i_1) times dots times (a^i_N, b^i_N) supset A }
 $
 と定義する。
 この$macron(cal(L))^N$は$N$次元_ルベーグ外測度_と呼ばれる。
@@ -102,7 +107,7 @@ $
 ここで$tilde(m)(nothing) = 0$と$X in cal(D)$を仮定して、
 $X$の部分集合$A$に対して可算個の$D_i in cal(D)$で被覆することで
 $
-macron(m)(A) = inf{ sum_i tilde(m)(D_i) mid bigcup_i D_i supset A }
+macron(m)(A) = inf{ sum_i tilde(m)(D_i) mid(|) union.big_i D_i supset A }
 $
 と定義すると、$macron(m)$は$X$の外測度になる。
 ]
@@ -342,7 +347,7 @@ $X_n = union.big_(i <= n) A_i$とおけば単調性$X_n subset X_(n+1)$を満た
 シグマ有限性より$X_n in cal(A)$であって$m_0 (X_n) < oo$, $X_n subset X_(n+1)$, $union.big_n X_n = X$をみたすものが取れる。
 この$X_n$をもとにして集合族
 $
-cal(C) = { A in cal(F) mid m_1 (A sect X_n) = m_2 (A sect X_n) forall n in NN }
+cal(C) = { A in cal(F) mid(|) m_1 (A sect X_n) = m_2 (A sect X_n) forall n in NN }
 $
 を定める。
 有限加法族$cal(A)$上では$m = m_1 = m_2$なので、$cal(A) subset cal(C)$である。
